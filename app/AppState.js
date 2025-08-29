@@ -14,10 +14,12 @@ class ObservableAppState extends EventEmitter {
   ]
   // @type {Snack}
   money = 0;
+  totalMoney = 0;
+
   activeSnack = null
   // /**@type {import('./models/Example.js').Example[]} */
   /**
-   * @type {Snack}
+  //  * @type {Snack}
    */
   mySnacks = []
 }

@@ -1,12 +1,13 @@
 import { AppState } from "../AppState.js";
 import { snackService } from "../services/SnacksService.js";
+import { moneyService } from "../services/SnacksService.js";
 
 export class SnackController {
     constructor() {
         console.log(AppState.snacks)
         console.table(AppState.snacks)
         this.drawSnackCards()
-        AppState.on('money', this.drawMoney)
+        AppState.on('money', this.drawTotal)
 
     }
 
@@ -23,15 +24,17 @@ export class SnackController {
 
 
     addQuarter() {
-        snackService.addQuarter()
+        moneyService.addQuarter()
     }
 
-    drawMoney() {
-        const snackMoney = new Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' }).format(AppState.money)
-        setText('total-money', snackMoney)
+    drawTotal() {
+        let totalElm = document.getElementById('total-money')
+        let totalMoneyContent = ''
+        AppState.snacks.forEach((snack) => {
+            totalMoneyContent += snack.price
 
-        let addTFElm = document.getElementById('bank')
-        let myMoney = ''
+        })
+        totalElm.innerHTML = totalMoneyContent
 
     }
 

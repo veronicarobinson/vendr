@@ -19,7 +19,7 @@ export class Snack {
                     ${this.name}
                     </div>
                     <div>
-                    $${this.price}
+                    ${this.currentPrice}
                     </div>
                 </div>
             </div>
@@ -28,6 +28,12 @@ export class Snack {
         `
 
     }
+
+
+    get currentPrice() {
+        return new Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' }).format(this.price)
+    }
+
 
 
 }
